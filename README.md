@@ -3,8 +3,8 @@
 ## Introduction
 
 This is a simple python script meant to serve as a substitute for ReactBot.exe created by Jacksfilms, Cuyoya, and Camtoonist, written for Linux.
-Since the original program was built for Windows in Unity, and not everyone was able to make Wine or Proton compatibility layers work, I thought that a simple script written especially for Linux would be good.
-Due to the nature of Linux distributions, this probably won't work everywhere, but I hope it serves as a template for anyone who wants to help adjust it for specific distributions or window environments.
+Since the original program was built for Windows in Unity, and not everyone was able to make Wine or Proton compatibility layers work (including me), I thought that a simple script written especially for Linux would be good.
+This probably won't work on all Linux Distributions, but I hope it serves as a template for anyone who wants to help adjust it for specific distributions or window environments.
 I created this on Linux Mint so hopefully Debian-based distributions should work well.
 
 ## Getting started
@@ -13,8 +13,9 @@ Note: This program requires root permission. This is because I rely on the `keyb
 
 I don't know how the "DLC" will be structured when it comes out, but I assume it's a similar setup to what is in the free version, so you probably won't have to do any different steps.
 
-### Dependency
+### Dependencies
 - VLC
+- If the compiled executable does not work for you, Python (which may come with your distro)
 
 ### Installation
 1. Download [ReactBot.exe](https://jacksfilmscouncil-shop.fourthwall.com/products/reactbot-exe)
@@ -54,3 +55,8 @@ Contributions are welcome! Please help me fix my terrible code.
 6. Run the program with `sudo ./venv/bin/python main.py`
 7. Make a pull request on GitHub
 8. If you want to use pyinstaller to make an executable, you probably need to modify vlc.py. Follow along with the instructions at the last comment of [this GitHub issue](https://github.com/pyinstaller/pyinstaller/issues/4506); You'll know if you forgot this if you get some message along the lines of NoneType has no method media_player_new()
+
+# Credits
+
+Thanks to Cuyoya for reacting positively to the original "How to get reactbot on linux" message which encouraged me to actually consider doing this
+Thanks to u/MxPrime101 and u/ILikeMinecraft097 on the r/JacksFilms subreddit for making their posts about getting ReactBot on Linux
