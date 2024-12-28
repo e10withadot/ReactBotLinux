@@ -19,14 +19,15 @@ I don't know how the "DLC" will be structured when it comes out, but I assume it
 ### Installation
 1. Download [ReactBot.exe](https://jacksfilmscouncil-shop.fourthwall.com/products/reactbot-exe)
 2. Extract it out to some directory, I will call this .../ReactBot
-3. Download this repo, or at least `reactbot` and `config.json`
-4. Place `reactbot` and `config.json` in the same directory. It does not have to be the same directory as ReactBot
-5. In `config.json`, edit "idle" to .../ReactBot/ReactBot_Data/sharedassets0.resource
-6. In `config.json`, edit "phrases" to .../ReactBot/ReactBot_Data/StreamingAssets/GrabBag. Do not end the path with a "/"!
-7. You can edit "phrase_key" to be whatever you want it to be, or leave it at the default F7
-8. You must edit "quit_key": ***The program will not stop if you close the VLC window.*** This leads to a leak of resources, so use the quit_key to exit properly.
-9. You can ignore "aout", it's for if you have problems later on.
-10. Save and close `config.json`, then run the `reactbot` executable.
+3. Download this repo, click Code, Download ZIP, then extract it.
+4. Make the `reactbot` executable actually executable: `chmod +x reactbot`
+5. Place `reactbot` and `config.json` in the same directory. It does not have to be the same directory as ReactBot
+6. In `config.json`, edit "idle" to .../ReactBot/ReactBot_Data/sharedassets0.resource
+7. In `config.json`, edit "phrases" to .../ReactBot/ReactBot_Data/StreamingAssets/GrabBag. Do not end the path with a "/"!
+8. You can edit "phrase_key" to be whatever you want it to be, or leave it at the default F7
+9. You must edit "quit_key": ***The program will not stop if you close the VLC window.*** This leads to a leak of resources, so use the quit_key to exit properly.
+10. You can ignore "aout", it's for if you have problems later on.
+11. Save and close `config.json`, then run the `reactbot` executable.
 
 ## Troubleshooting
 
