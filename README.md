@@ -59,4 +59,5 @@ Contributions are welcome! Please help me fix my terrible code.
 # Credits
 
 Thanks to Cuyoya for reacting positively to the original "How to get reactbot on linux" message which encouraged me to actually consider doing this
+
 Thanks to u/MxPrime101 and u/ILikeMinecraft097 on the r/JacksFilms subreddit for making their posts about getting ReactBot on Linux
