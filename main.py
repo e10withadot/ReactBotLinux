@@ -27,19 +27,24 @@ else:
     instance: vlc.Instance = vlc.Instance()
 player: vlc.MediaPlayer = instance.media_player_new()
 
+
 def play_video(path: str) -> None:
     """Plays a video in vlc. Once this function is called, the instance and player have been set up, so we can set the media to whatever path was supplied and play it."""
     media: vlc.Media = instance.media_new(path)
     player.set_media(media)
     player.play()
 
+
 def play_random_video() -> None:
     """Chooses and plays a random video from the phrases directory as defined in the config."""
-    files: list[str] = os.listdir(phrases_directory) # List of paths to each video
-    video_files: list[str] = [file for file in files if file.endswith(".mp4")] # Filter those paths by the ones not ending in .mp4 (should remove nothing unless something is wrong)
+    files: list[str] = os.listdir(
+        phrases_directory)  # List of paths to each video
+    # Filter those paths by the ones not ending in .mp4 (should remove nothing unless something is wrong)
+    video_files: list[str] = [file for file in files if file.endswith(".mp4")]
     if video_files:
         filename: str = random.choice(video_files)
         play_video(phrases_directory + "/" + filename)
+
 
 def verify_paths() -> None:
     """Checks each entry in config.json to be sure it's valid"""
@@ -57,13 +62,15 @@ def verify_paths() -> None:
         print(f"Quit key is empty. Did you even read the README?")
         sys.exit()
 
+
 def main() -> None:
-    verify_paths() # This function will exit if there are any problems
+    verify_paths()  # This function will exit if there are any problems
 
     # Start ReactBot's initial idle animation
     media: vlc.Media = instance.media_new(idle_path)
     player.set_media(media)
-    player.video_set_scale(0.25) # So it fits in the corner of your screen, you can resize it though.
+    # So it fits in the corner of your screen, you can resize it though.
+    player.video_set_scale(0.25)
     player.play()
     player.set_fullscreen(False)
 
@@ -74,8 +81,10 @@ def main() -> None:
             time.sleep(1)
         if keyboard.is_pressed(quit_key):
             break
-        time.sleep(0.1) # To limit CPU usage, we only poll for a keypress every 100ms
-        if player.get_state() in [vlc.State.Ended, vlc.State.Stopped, vlc.State.Error]: # This loops the video once the idle animation finishes
+        # To limit CPU usage, we only poll for a keypress every 100ms
+        time.sleep(0.1)
+        # This loops the video once the idle animation finishes
+        if player.get_state() in [vlc.State.Ended, vlc.State.Stopped, vlc.State.Error]:
             play_video(idle_path)
             continue
 
@@ -83,13 +92,14 @@ def main() -> None:
     player.stop()
     sys.exit()
 
-if __name__ == "__main__":
-    # Also exit cleanly if we ran through a terminal and we ctrl+c
-    try:
-        # This checks if we are root, os.geteuid() means get effective user id, and the root user has an effective user id of 0
-        if os.geteuid() != 0:
-            os.execvp("sudo", ["sudo"] + sys.argv) # Re-run the program as the root user if possible
-        main()
-    except KeyboardInterrupt:
-        player.stop()
-        sys.exit(0)
+
+# Also exit cleanly if we ran through a terminal and we ctrl+c
+try:
+    # This checks if we are root, os.geteuid() means get effective user id, and the root user has an effective user id of 0
+    if os.geteuid() != 0:
+        # Re-run the program as the root user if possible
+        os.execvp("sudo", ["sudo"] + sys.argv)
+    main()
+except KeyboardInterrupt:
+    player.stop()
+    sys.exit(0)
